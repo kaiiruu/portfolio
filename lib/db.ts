@@ -1,8 +1,11 @@
 import Database from "better-sqlite3"
 import path from "path"
+import os from "os"
 import fs from "fs"
 
-const DB_DIR = path.join(process.cwd(), "data")
+// On Vercel the project folder is read-only; /tmp is the only writable location.
+// NOTE: data in /tmp is temporary and is wiped whenever the server instance restarts.
+const DB_DIR = process.env.VERCEL ? path.join(os.tmpdir(), "data") : path.join(process.cwd(), "data")
 if (!fs.existsSync(DB_DIR)) {
   fs.mkdirSync(DB_DIR, { recursive: true })
 }
