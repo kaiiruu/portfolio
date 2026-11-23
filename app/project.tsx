@@ -354,7 +354,7 @@ const projectList = [
 
     {
     index: 4,
-    imagePath: "/images/IntroToModernAI.png",
+    imagePath: "/images/LIKHAPMA.png",
     title: "Likha: Philippine Mythology Archive",
     shortDescription: "A world of forest guardians, moon devourers, and stories passed from one generation to the next.",
     createdAt: "2026-11-23",
