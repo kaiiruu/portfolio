@@ -153,7 +153,7 @@ const shortCut = [
     link: "experience",
   },
   {
-    name: "Projects",
+    name: "Projects/Certificates",
     link: "projects",
   },
   {

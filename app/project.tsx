@@ -68,11 +68,19 @@ export default function Project() {
                       <span className="w-8 h-[2px] bg-text-primary group-hover/btn:w-12 transition-all duration-300"></span>
                     </button>
 
-                    <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="p-2 border border-text-secondary/20 rounded-full text-text-secondary hover:text-background hover:bg-text-primary hover:border-text-primary transition-all duration-300">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    </a>
+                    {project.isLiveDemoDisabled ? (
+                      <span aria-disabled="true" className="p-2 border border-text-secondary/20 rounded-full text-text-secondary opacity-40 cursor-not-allowed">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </span>
+                    ) : (
+                      <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="p-2 border border-text-secondary/20 rounded-full text-text-secondary hover:text-background hover:bg-text-primary hover:border-text-primary transition-all duration-300">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    )}
                   </div>
                 </div>
               </GlareHover>
@@ -117,11 +125,19 @@ export default function Project() {
                           <span className="w-8 h-[2px] bg-text-primary group-hover/btn:w-12 transition-all duration-300"></span>
                         </button>
 
-                        <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="p-2 border border-text-secondary/20 rounded-full text-text-secondary hover:text-background hover:bg-text-primary hover:border-text-primary transition-all duration-300">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </a>
+                        {project.isLiveDemoDisabled ? (
+                          <span aria-disabled="true" className="p-2 border border-text-secondary/20 rounded-full text-text-secondary opacity-40 cursor-not-allowed">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </span>
+                        ) : (
+                          <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="p-2 border border-text-secondary/20 rounded-full text-text-secondary hover:text-background hover:bg-text-primary hover:border-text-primary transition-all duration-300">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </a>
+                        )}
                       </div>
                     </div>
                   </GlareHover>
@@ -163,11 +179,19 @@ export default function Project() {
                           <span className="w-8 h-[2px] bg-text-primary group-hover/btn:w-12 transition-all duration-300"></span>
                         </button>
 
-                        <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="p-2 border border-text-secondary/20 rounded-full text-text-secondary hover:text-background hover:bg-text-primary hover:border-text-primary transition-all duration-300">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </a>
+                        {project.isLiveDemoDisabled ? (
+                          <span aria-disabled="true" className="p-2 border border-text-secondary/20 rounded-full text-text-secondary opacity-40 cursor-not-allowed">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </span>
+                        ) : (
+                          <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="p-2 border border-text-secondary/20 rounded-full text-text-secondary hover:text-background hover:bg-text-primary hover:border-text-primary transition-all duration-300">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </a>
+                        )}
                       </div>
                     </div>
                   </GlareHover>
@@ -240,9 +264,15 @@ export default function Project() {
 
                 {/* Modal Footer */}
                 <div className="p-6 border-t border-text-secondary/10 flex flex-col sm:flex-row gap-4 bg-background">
-                  <a href={activeProject.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="flex-1 text-center font-bold text-sm tracking-widest uppercase bg-text-primary text-background py-4 rounded-xl hover:-translate-y-1 transition-transform duration-300">
-                    Live Demo
-                  </a>
+                  {activeProject.isLiveDemoDisabled ? (
+                    <button disabled className="flex-1 text-center font-bold text-sm tracking-widest uppercase bg-text-primary text-background py-4 rounded-xl opacity-50 cursor-not-allowed">
+                      Live Demo
+                    </button>
+                  ) : (
+                    <a href={activeProject.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="flex-1 text-center font-bold text-sm tracking-widest uppercase bg-text-primary text-background py-4 rounded-xl hover:-translate-y-1 transition-transform duration-300">
+                      Live Demo
+                    </a>
+                  )}
                   {activeProject.isPrivateRepo ? (
                     <button disabled className="flex-1 flex justify-center items-center gap-2 text-center font-bold text-sm tracking-widest uppercase border-2 border-text-secondary/20 text-text-secondary opacity-50 cursor-not-allowed py-4 rounded-xl">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -277,6 +307,50 @@ const projectList = [
     githubUrl: "https://github.com/kaiiruu",
     liveDemoUrl: "https://qculms.vercel.app",
     isPrivateRepo: true,
-  }
+    isLiveDemoDisabled: false,
+  },
+
+  {
+    index: 1,
+    imagePath: "/images/NetworkingBasics.png",
+    title: "Networking Certificate",
+    shortDescription: "Basics of computer networking and discover how networks operate.",
+    createdAt: "2026-11-16",
+    features: ["Protocols Standard", "Application Layer Services", "Wireless Access", "Network Types"],
+    tech: ["Cisco"],
+    githubUrl: "",
+    liveDemoUrl: "",
+    isPrivateRepo: true,
+    isLiveDemoDisabled: true,
+  },
+
+  {
+    index: 2,
+    imagePath: "/images/OperatingsystemsBasics.png",
+    title: "Operating Systems Certificate",
+    shortDescription: "Basics of computer and mobile devices operating systems.",
+    createdAt: "2026-11-16",
+    features: ["Linux", "Windows", "Operating System Security", "Mobile Network Connectivity"],
+    tech: ["Cisco"],
+    githubUrl: "",
+    liveDemoUrl: "",
+    isPrivateRepo: true,
+    isLiveDemoDisabled: true,
+  },
+
+  {
+    index: 3,
+    imagePath: "/images/IntroToModernAI.png",
+    title: "Introduction to Modern AI Certificate",
+    shortDescription: "AI in your daily life, craft effective chatbot prompts, and use computer vision and machine translation.",
+    createdAt: "2026-11-16",
+    features: ["AI", "Chatbot Prompts"],
+    tech: ["Cisco"],
+    githubUrl: "",
+    liveDemoUrl: "",
+    isPrivateRepo: true,
+    isLiveDemoDisabled: true,
+  },
+
   // use the same structure to add more
 ]
