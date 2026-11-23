@@ -326,7 +326,7 @@ const projectList = [
 
   {
     index: 2,
-    imagePath: "/images/OperatingsystemsBasics.png",
+    imagePath: "/images/OperatingSystemsBasics.png",
     title: "Operating Systems Certificate",
     shortDescription: "Basics of computer and mobile devices operating systems.",
     createdAt: "2026-11-16",
