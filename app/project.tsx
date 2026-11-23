@@ -352,5 +352,19 @@ const projectList = [
     isLiveDemoDisabled: true,
   },
 
+    {
+    index: 4,
+    imagePath: "/images/IntroToModernAI.png",
+    title: "Likha: Philippine Mythology Archive",
+    shortDescription: "A world of forest guardians, moon devourers, and stories passed from one generation to the next.",
+    createdAt: "2026-11-23",
+    features: ["Philippine Mythology", "Myths", "Urban Legends", "Stories"],
+    tech: ["React", "Vite"],
+    githubUrl: "",
+    liveDemoUrl: "https://likhapma.vercel.app",
+    isPrivateRepo: true,
+    isLiveDemoDisabled: false,
+  },
+
   // use the same structure to add more
 ]
