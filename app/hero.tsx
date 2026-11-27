@@ -105,11 +105,11 @@ export default function Hero() {
             </div>
 
             {/* Quick Stats redesigned as floating minimal badges */}
-            <div className={`absolute -bottom-10 md:-bottom-12 -left-4 md:-left-12 z-20 md:flex flex-col gap-3 ${showStats ? "flex" : "hidden"}`}>
+            <div className={`absolute -bottom-10 md:-bottom-12 -left-4 md:-left-12 z-20 flex flex-col gap-3 items-start`}>
               {quickStatsList.map((stat, index) => (
-                <div className={`floating flex items-center gap-3 bg-background/90 backdrop-blur-md border border-text-secondary/10 p-3 pr-5 rounded-2xl shadow-xl hover:-translate-y-1 transition-transform duration-300 animate-in fade-in slide-in-from-bottom-5`} style={{ animationDelay: `${index * 150}ms` }} key={index}>
+                <div onClick={() => setShowStats((prev) => !prev)} className={`floating flex items-center bg-background/90 backdrop-blur-md border border-text-secondary/10 p-3 md:pr-5 md:gap-3 rounded-2xl ${showStats ? "gap-3 pr-5" : "gap-0"} shadow-xl hover:-translate-y-1 transition-transform duration-300 animate-in fade-in slide-in-from-bottom-5`} style={{ animationDelay: `${index * 150}ms` }} key={index}>
                   <div className="bg-text-primary text-background p-2 rounded-xl">{stat.icon}</div>
-                  <span className="text-xs md:text-sm font-semibold text-text-primary whitespace-nowrap">{stat.message}</span>
+                  <span className={`text-xs md:text-sm font-semibold text-text-primary whitespace-nowrap md:inline ${showStats ? "inline" : "hidden"}`}>{stat.message}</span>
                 </div>
               ))}
             </div>
