@@ -107,9 +107,15 @@ export default function Hero() {
             {/* Quick Stats redesigned as floating minimal badges */}
             <div className={`absolute -bottom-10 md:-bottom-12 -left-4 md:-left-12 z-20 flex flex-col gap-3 items-start`}>
               {quickStatsList.map((stat, index) => (
-                <div onClick={() => setShowStats((prev) => !prev)} className={`floating flex items-center bg-background/90 backdrop-blur-md border border-text-secondary/10 p-3 md:pr-5 md:gap-3 rounded-2xl ${showStats ? "gap-3 pr-5" : "gap-0"} shadow-xl hover:-translate-y-1 transition-transform duration-300 animate-in fade-in slide-in-from-bottom-5`} style={{ animationDelay: `${index * 150}ms` }} key={index}>
-                  <div className="bg-text-primary text-background p-2 rounded-xl">{stat.icon}</div>
-                  <span className={`text-xs md:text-sm font-semibold text-text-primary whitespace-nowrap md:inline ${showStats ? "inline" : "hidden"}`}>{stat.message}</span>
+                <div onClick={() => setShowStats((prev) => !prev)} className={`floating flex items-center cursor-pointer md:cursor-default bg-background/90 backdrop-blur-md border border-text-secondary/10 p-3 md:pr-5 rounded-2xl ${showStats ? "pr-5" : "pr-3"} shadow-xl hover:-translate-y-1 transition-[transform,padding] duration-500 ease-in-out animate-in fade-in slide-in-from-bottom-5`} style={{ animationDelay: `${index * 150}ms` }} key={index}>
+                  <div className="shrink-0 bg-text-primary text-background p-2 rounded-xl">{stat.icon}</div>
+                  {/* grid 0fr -> 1fr animates the label's width smoothly */}
+                  <div
+                    className={`grid transition-[grid-template-columns,margin,opacity] duration-500 ease-in-out md:grid-cols-[1fr] md:ml-3 md:opacity-100 ${showStats ? "grid-cols-[1fr] ml-3 opacity-100" : "grid-cols-[0fr] ml-0 opacity-0"}`}
+                    style={{ transitionDelay: showStats ? `${index * 60}ms` : "0ms" }}
+                  >
+                    <span className="overflow-hidden min-w-0 text-xs md:text-sm font-semibold text-text-primary whitespace-nowrap">{stat.message}</span>
+                  </div>
                 </div>
               ))}
             </div>
