@@ -8,6 +8,7 @@ export default function Hero() {
   const [index, setIndex] = useState(0)
   const [subIndex, setSubIndex] = useState(0)
   const [deleting, setDeleting] = useState(false)
+  const [showStats, setShowStats] = useState(false)
 
   const texts = useMemo(() => ["Frontend Developer"], [])
 
@@ -99,12 +100,12 @@ export default function Hero() {
             {/* Subtle aesthetic backdrop instead of neon glow */}
             <div className="absolute inset-0 bg-linear-to-tr from-thirdary to-background rounded-full scale-110 opacity-50 blur-2xl"></div>
 
-            <div className="relative z-10 p-2 bg-background border border-text-secondary/10 rounded-full shadow-2xl group">
+            <div onClick={() => setShowStats((prev) => !prev)} className="relative z-10 p-2 bg-background border border-text-secondary/10 rounded-full shadow-2xl group">
               <Image src="/images/me.jpg" alt="Kyle Vincent Antonio" width={400} height={400} className="rounded-full object-cover aspect-square floating grayscale hover:grayscale-0 group-hover:grayscale-0 transition-all duration-700 cursor-pointer" priority />
             </div>
 
             {/* Quick Stats redesigned as floating minimal badges */}
-            <div className="absolute -bottom-10 md:-bottom-12 -left-4 md:-left-12 z-20 flex flex-col gap-3">
+            <div className={`absolute -bottom-10 md:-bottom-12 -left-4 md:-left-12 z-20 md:flex flex-col gap-3 ${showStats ? "flex" : "hidden"}`}>
               {quickStatsList.map((stat, index) => (
                 <div className={`floating flex items-center gap-3 bg-background/90 backdrop-blur-md border border-text-secondary/10 p-3 pr-5 rounded-2xl shadow-xl hover:-translate-y-1 transition-transform duration-300 animate-in fade-in slide-in-from-bottom-5`} style={{ animationDelay: `${index * 150}ms` }} key={index}>
                   <div className="bg-text-primary text-background p-2 rounded-xl">{stat.icon}</div>
