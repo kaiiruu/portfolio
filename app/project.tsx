@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import FadeDown from "@/components/animations/FadeDown"
 import FadeUp from "@/components/animations/FadeUp"
@@ -8,6 +8,92 @@ import GlareHover from "@/components/GlareHover"
 
 export default function Project() {
   const [isOpen, setIsOpen] = useState<number | null>(null)
+  const loopRef = useRef<HTMLDivElement>(null)
+
+  // Mobile slider: infinite auto-scroll that the user can also swipe.
+  // Content is rendered twice, so jumping by half the width is seamless.
+  useEffect(() => {
+    const el = loopRef.current
+    if (!el) return
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const SECONDS_PER_LOOP = 25 // same pace as the old CSS animation
+    const RESUME_DELAY = 1500 // ms of inactivity before auto-scroll resumes
+
+    let raf = 0
+    let last = performance.now()
+    let pos = 1
+    let lastWritten = 1
+    let inited = false
+    let touching = false
+    let hovering = false
+    let lastUserScroll = 0
+
+    const half = () => el.scrollWidth / 2
+
+    // keep scrollLeft inside [1, half + 1) so both swipe directions can wrap
+    const wrap = (v: number) => {
+      const h = half()
+      if (h <= 0) return v
+      if (v >= h + 1) return v - h
+      if (v <= 0) return v + h
+      return v
+    }
+
+    const onScroll = () => {
+      if (Math.abs(el.scrollLeft - lastWritten) < 1.5) return // our own auto-scroll
+      lastUserScroll = performance.now()
+      const wrapped = wrap(el.scrollLeft)
+      if (wrapped !== el.scrollLeft) el.scrollLeft = wrapped
+      pos = el.scrollLeft
+      lastWritten = pos
+    }
+
+    const tick = (now: number) => {
+      const dt = Math.min(now - last, 64) / 1000
+      last = now
+      const h = half()
+
+      if (h > 0) {
+        if (!inited) {
+          el.scrollLeft = 1
+          pos = 1
+          lastWritten = el.scrollLeft
+          inited = true
+        }
+        const idle = !touching && !hovering && now - lastUserScroll > RESUME_DELAY
+        if (idle && !reduceMotion) {
+          pos = wrap(pos + (h / SECONDS_PER_LOOP) * dt)
+          el.scrollLeft = pos
+          lastWritten = el.scrollLeft
+        }
+      }
+      raf = requestAnimationFrame(tick)
+    }
+
+    const down = () => (touching = true)
+    const up = () => (touching = false)
+    const enter = () => (hovering = true)
+    const leave = () => (hovering = false)
+
+    el.addEventListener("scroll", onScroll, { passive: true })
+    el.addEventListener("pointerdown", down)
+    el.addEventListener("pointerup", up)
+    el.addEventListener("pointercancel", up)
+    el.addEventListener("mouseenter", enter)
+    el.addEventListener("mouseleave", leave)
+    raf = requestAnimationFrame(tick)
+
+    return () => {
+      cancelAnimationFrame(raf)
+      el.removeEventListener("scroll", onScroll)
+      el.removeEventListener("pointerdown", down)
+      el.removeEventListener("pointerup", up)
+      el.removeEventListener("pointercancel", up)
+      el.removeEventListener("mouseenter", enter)
+      el.removeEventListener("mouseleave", leave)
+    }
+  }, [])
 
   // Prevent scrolling when modal is open
   useEffect(() => {
@@ -88,9 +174,9 @@ export default function Project() {
           ))}
         </div>
 
-        {/* Mobile & Tablet View: Infinite Loop Slider */}
-        <div className="lg:hidden w-full overflow-hidden relative py-4">
-          <div className="flex w-max animate-infinite-scroll hover:[animation-play-state:paused]">
+        {/* Mobile & Tablet View: Infinite Loop Slider (auto-scrolls, swipeable) */}
+        <div ref={loopRef} className="lg:hidden w-full overflow-x-auto relative py-4 overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex w-max">
             <div className="flex gap-6 px-3">
               {projectList.map((project, index) => (
                 <div key={`mobile1-${index}`} className="w-[85vw] sm:w-[400px] flex-shrink-0">
